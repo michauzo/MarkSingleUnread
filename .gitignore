@@ -59,6 +59,7 @@ obj
 bin
 *.user
 
+dist/**
 node_modules/**
 typings/**
 .vscode/**
