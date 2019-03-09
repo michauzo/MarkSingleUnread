@@ -39,7 +39,8 @@ module.exports = {
             './app.css',
             './resource.html',
             './support.html',
-            { from: './manifest.xml', to: './ios_manifest.xml' }
+            './ios_manifest.xml',
+            './web_manifest.xml',
         ], {
             to: './dist'
         })
