@@ -12,14 +12,14 @@ Office.initialize = reason => {
 
 // Add any ui-less function here
 function markAsUnread(event) {
-    console.trace("MarkAsUnread: started");
+    console.debug("MarkAsUnread: started");
     Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function (result) {
         if (result.status === "succeeded") {
             var accessToken = result.value;
 
-            console.trace("MarkAsUnread: Got token");
+            console.debug("MarkAsUnread: Got token");
             // Use the access token
-            markAsUnreadInternal(accessToken);
+            markAsUnreadInternal(accessToken, () => event.completed());
         } else {
             // Handle the error
             console.error(result.error);
@@ -27,9 +27,9 @@ function markAsUnread(event) {
     });
 }
 
-function markAsUnreadInternal(accessToken) {
+function markAsUnreadInternal(accessToken, callback) {
     // Get the item's REST ID
-    console.trace("MarkAsUnread: internal started");
+    console.debug("MarkAsUnread: internal started");
     var itemId = getItemRestId();
 
     // Construct the REST URL to the current item
@@ -49,14 +49,16 @@ function markAsUnreadInternal(accessToken) {
         headers: { 'Authorization': 'Bearer ' + accessToken }
     }).done(function (item) {
         // Message is passed in `item`
+        callback();
     }).fail(function (error) {
         // Handle error
         console.error(error);
+        callback();
     });
 }
 
 function getItemRestId() {
-    console.trace("MarkAsUnread: Getting item id");
+    console.debug("MarkAsUnread: Getting item id");
     if (Office.context.mailbox.diagnostics.hostName === 'OutlookIOS') {
         // itemId is already REST-formatted
         return Office.context.mailbox.item.itemId;
