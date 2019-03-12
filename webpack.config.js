@@ -42,9 +42,6 @@ module.exports = {
             './ios_manifest.xml',
             './web_manifest.xml',
             { from: './assets', to: "assets" },
-            { from: './node_modules/jquery/dist/jquery.min.js', to: "node_modules/jquery/dist/jquery.min.js" },
-            { from: './node_modules/office-ui-fabric-js/dist/js', to: "node_modules/office-ui-fabric-js/dist/js" },
-            { from: './node_modules/office-ui-fabric-js/dist/css', to: "node_modules/office-ui-fabric-js/dist/css" }
         ], {
             to: './dist'
         })

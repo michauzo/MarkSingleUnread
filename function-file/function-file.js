@@ -9,7 +9,7 @@ Office.initialize = reason => {
 };
 
 // Add any ui-less function here
-function markAsUnread(event) {
+export function markAsUnread(event) {
     console.trace("MarkAsUnread: started");
     Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function (result) {
         if (result.status === "succeeded") {
