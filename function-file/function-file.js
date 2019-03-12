@@ -3,7 +3,7 @@
  * See LICENSE in the project root for license information.
  */
 
-import "jquery"
+import $ from "jquery";
 
 // The initialize function must be run each time a new page is loaded
 Office.initialize = reason => {
