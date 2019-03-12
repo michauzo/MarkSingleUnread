@@ -5,11 +5,11 @@
 
 // The initialize function must be run each time a new page is loaded
 Office.initialize = reason => {
-
+    window.markAsUnread = markAsUnread;
 };
 
 // Add any ui-less function here
-export function markAsUnread(event) {
+function markAsUnread(event) {
     console.trace("MarkAsUnread: started");
     Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function (result) {
         if (result.status === "succeeded") {
