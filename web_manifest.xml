@@ -21,7 +21,7 @@
 
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
   <IconUrl DefaultValue="https://marksingleunread.azurewebsites.net/assets/icon-32.png" />
-  <HighResolutionIconUrl DefaultValue="https://marksingleunread.azurewebsites.net/assets/hi-res-icon.png"/>
+  <HighResolutionIconUrl DefaultValue="https://marksingleunread.azurewebsites.net/assets/logo-filled.png"/>
 
   <!--If you plan to submit this add-in to the Office Store, uncomment the SupportUrl element below-->
   <SupportUrl DefaultValue="https://marksingleunread.azurewebsites.net/support.html" />
@@ -65,7 +65,6 @@
     </Requirements>
     <Hosts>
       <Host xsi:type="MailHost">
-
         <DesktopFormFactor>
           <!-- Location of the Functions that UI-less buttons can trigger (ExecuteFunction Actions). -->
           <FunctionFile resid="functionFile" />
@@ -105,7 +104,9 @@
     <Resources>
       <bt:Images>
         <bt:Image id="icon16" DefaultValue="https://marksingleunread.azurewebsites.net/assets/icon-16.png"/>
+        <bt:Image id="icon25" DefaultValue="https://marksingleunread.azurewebsites.net/assets/icon-25.png"/>
         <bt:Image id="icon32" DefaultValue="https://marksingleunread.azurewebsites.net/assets/icon-32.png"/>
+        <bt:Image id="icon48" DefaultValue="https://marksingleunread.azurewebsites.net/assets/icon-48.png"/>
         <bt:Image id="icon80" DefaultValue="https://marksingleunread.azurewebsites.net/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
