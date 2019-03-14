@@ -16,8 +16,8 @@
   <ProviderName>Michauzo</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
-  <DisplayName DefaultValue="Mark Single Unread" />
-  <Description DefaultValue="Allows for marking a single message in conversation as unread."/>
+  <DisplayName DefaultValue="Single Commands" />
+  <Description DefaultValue="Allows for performing commands on a single message in conversation."/>
 
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
   <IconUrl DefaultValue="https://marksingleunread.azurewebsites.net/assets/icon-32.png" />
@@ -78,10 +78,10 @@
                 <Label resid="groupLabel" />
                 <!-- Launch the add-in : task pane button -->
                 <Control xsi:type="Button" id="msgReadOpenPaneButton">
-                  <Label resid="paneReadButtonLabel" />
+                  <Label resid="markUnreadButtonLabel" />
                   <Supertip>
-                    <Title resid="paneReadSuperTipTitle" />
-                    <Description resid="paneReadSuperTipDescription" />
+                    <Title resid="markUnreadSuperTipTitle" />
+                    <Description resid="markUnreadSuperTipDescription" />
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="icon16" />
@@ -116,11 +116,11 @@
       <bt:ShortStrings>
         <bt:String id="groupLabel" DefaultValue="My Add-in Group"/>
         <bt:String id="customTabLabel" DefaultValue="My Add-in Tab"/>
-        <bt:String id="paneReadButtonLabel" DefaultValue="Mark as unread"/>
-        <bt:String id="paneReadSuperTipTitle" DefaultValue="Mark message as unread"/>
+        <bt:String id="markUnreadButtonLabel" DefaultValue="Mark as unread"/>
+        <bt:String id="markUnreadSuperTipTitle" DefaultValue="Mark message as unread"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="paneReadSuperTipDescription" DefaultValue="Marks a single message in conversation as unread."/>
+        <bt:String id="markUnreadSuperTipDescription" DefaultValue="Marks a single message in conversation as unread."/>
       </bt:LongStrings>
     </Resources>
 
@@ -146,11 +146,11 @@
                 <Group id="msgReadGroup">
                   <Label resid="groupLabel" />
                   <!-- Launch the add-in : task pane button -->
-                  <Control xsi:type="Button" id="msgReadOpenPaneButton">
-                    <Label resid="paneReadButtonLabel" />
+                  <Control xsi:type="Button" id="markUnreadButton">
+                    <Label resid="markUnreadButtonLabel" />
                     <Supertip>
-                      <Title resid="paneReadSuperTipTitle" />
-                      <Description resid="paneReadSuperTipDescription" />
+                      <Title resid="markUnreadSuperTipTitle" />
+                      <Description resid="markUnreadSuperTipDescription" />
                     </Supertip>
                     <Icon>
                       <bt:Image size="16" resid="icon16" />
@@ -159,6 +159,21 @@
                     </Icon>
                     <Action xsi:type="ExecuteFunction">
                       <FunctionName>markAsUnread</FunctionName>
+                    </Action>
+                  </Control>
+                  <Control xsi:type="Button" id="flagButton">
+                    <Label resid="flagButtonLabel" />
+                    <Supertip>
+                      <Title resid="flagSuperTipTitle" />
+                      <Description resid="flagSuperTipDescription" />
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="icon16" />
+                      <bt:Image size="32" resid="icon32" />
+                      <bt:Image size="80" resid="icon80" />
+                    </Icon>
+                    <Action xsi:type="ExecuteFunction">
+                      <FunctionName>flag</FunctionName>
                     </Action>
                   </Control>
                   <!-- Go to http://aka.ms/ButtonCommands to learn how to add more Controls: ExecuteFunction and Menu -->
@@ -174,8 +189,8 @@
             <ExtensionPoint xsi:type="MobileMessageReadCommandSurface">
               <Group id="msgReadGroup">
                 <Label resid="groupLabel" />
-                <Control xsi:type="MobileButton" id="mblReadFunctionButton">
-                  <Label resid="paneReadButtonLabel" />
+                <Control xsi:type="MobileButton" id="mblMarkUnreadFunctionButton">
+                  <Label resid="markUnreadButtonLabel" />
                   <Icon xsi:type="bt:MobileIconList">
                     <bt:Image size="25" scale="1" resid="icon25" />
                     <bt:Image size="25" scale="2" resid="icon25" />
@@ -191,6 +206,25 @@
                   </Icon>
                   <Action xsi:type="ExecuteFunction">
                     <FunctionName>markAsUnread</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="MobileButton" id="mblFlagFunctionButton">
+                  <Label resid="flagButtonLabel" />
+                  <Icon xsi:type="bt:MobileIconList">
+                    <bt:Image size="25" scale="1" resid="icon25" />
+                    <bt:Image size="25" scale="2" resid="icon25" />
+                    <bt:Image size="25" scale="3" resid="icon25" />
+
+                    <bt:Image size="32" scale="1" resid="icon32" />
+                    <bt:Image size="32" scale="2" resid="icon32" />
+                    <bt:Image size="32" scale="3" resid="icon32" />
+
+                    <bt:Image size="48" scale="1" resid="icon48" />
+                    <bt:Image size="48" scale="2" resid="icon48" />
+                    <bt:Image size="48" scale="3" resid="icon48" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>flag</FunctionName>
                   </Action>
                 </Control>
               </Group>
@@ -214,11 +248,14 @@
         <bt:ShortStrings>
           <bt:String id="groupLabel" DefaultValue="My Add-in Group"/>
           <bt:String id="customTabLabel" DefaultValue="My Add-in Tab"/>
-          <bt:String id="paneReadButtonLabel" DefaultValue="Mark as unread"/>
-          <bt:String id="paneReadSuperTipTitle" DefaultValue="Mark message as unread"/>
+          <bt:String id="markUnreadButtonLabel" DefaultValue="Mark as unread"/>
+          <bt:String id="markUnreadSuperTipTitle" DefaultValue="Mark message as unread"/>
+          <bt:String id="flagButtonLabel" DefaultValue="Flag"/>
+          <bt:String id="flagSuperTipTitle" DefaultValue="Flag message"/>
         </bt:ShortStrings>
         <bt:LongStrings>
-          <bt:String id="paneReadSuperTipDescription" DefaultValue="Marks a single message in conversation as unread."/>
+          <bt:String id="markUnreadSuperTipDescription" DefaultValue="Marks a single message in conversation as unread."/>
+          <bt:String id="flagSuperTipDescription" DefaultValue="Flags a single message in conversation."/>
         </bt:LongStrings>
       </Resources>
     </VersionOverrides>

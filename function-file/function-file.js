@@ -8,18 +8,25 @@ import $ from "jquery";
 // The initialize function must be run each time a new page is loaded
 Office.initialize = reason => {
     window.markAsUnread = markAsUnread;
+    window.flag = flag;
 };
 
 // Add any ui-less function here
 function markAsUnread(event) {
-    console.debug("MarkAsUnread: started");
+    callWithToken(markAsUnreadInternal, event);
+}
+
+function flag(event) {
+    callWithToken(flagInternal, event);
+}
+
+function callWithToken(func, event) {
     Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function (result) {
         if (result.status === "succeeded") {
-            var accessToken = result.value;
+            const accessToken = result.value;
 
-            console.debug("MarkAsUnread: Got token");
             // Use the access token
-            markAsUnreadInternal(accessToken, () => event.completed());
+            func(accessToken, () => event.completed());
         } else {
             // Handle the error
             console.error(result.error);
@@ -28,14 +35,30 @@ function markAsUnread(event) {
 }
 
 function markAsUnreadInternal(accessToken, callback) {
+    const data = `{
+    "IsRead": false
+}`
+
+    updateMessage(data, accessToken, callback);
+}
+
+function flagInternal(accessToken, callback) {
+    const data = `{
+    "Flag": {
+        "FlagStatus": "Flagged"
+    }
+}`
+    updateMessage(data, accessToken, callback);
+}
+
+function updateMessage(data, accessToken, callback) {
     // Get the item's REST ID
-    console.debug("MarkAsUnread: internal started");
-    var itemId = getItemRestId();
+    const itemId = getItemRestId();
 
     // Construct the REST URL to the current item
     // Details for formatting the URL can be found at
     // https://docs.microsoft.com/previous-versions/office/office-365-api/api/version-2.0/mail-rest-operations#get-a-message-rest
-    var getMessageUrl = Office.context.mailbox.restUrl +
+    const getMessageUrl = Office.context.mailbox.restUrl +
         '/v2.0/me/messages/' + itemId;
 
     $.ajax({
@@ -43,9 +66,7 @@ function markAsUnreadInternal(accessToken, callback) {
         method: 'PATCH',
         contentType: 'application/json',
         dataType: 'json',
-        data: `{
-    "IsRead": false
-}`,
+        data,
         headers: { 'Authorization': 'Bearer ' + accessToken }
     }).done(function (item) {
         // Message is passed in `item`
@@ -58,7 +79,6 @@ function markAsUnreadInternal(accessToken, callback) {
 }
 
 function getItemRestId() {
-    console.debug("MarkAsUnread: Getting item id");
     if (Office.context.mailbox.diagnostics.hostName === 'OutlookIOS') {
         // itemId is already REST-formatted
         return Office.context.mailbox.item.itemId;

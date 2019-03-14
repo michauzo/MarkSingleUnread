@@ -40,7 +40,6 @@ module.exports = {
             './resource.html',
             './support.html',
             './ios_manifest.xml',
-            './web_manifest.xml',
             { from: './assets', to: "assets" },
         ], {
             to: './dist'
