@@ -84,9 +84,9 @@
                     <Description resid="markUnreadSuperTipDescription" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="icon16" />
-                    <bt:Image size="32" resid="icon32" />
-                    <bt:Image size="80" resid="icon80" />
+                    <bt:Image size="16" resid="unread16" />
+                    <bt:Image size="32" resid="unread32" />
+                    <bt:Image size="80" resid="unread80" />
                   </Icon>
                   <Action xsi:type="ExecuteFunction">
                     <FunctionName>markAsUnread</FunctionName>
@@ -153,9 +153,9 @@
                       <Description resid="markUnreadSuperTipDescription" />
                     </Supertip>
                     <Icon>
-                      <bt:Image size="16" resid="icon16" />
-                      <bt:Image size="32" resid="icon32" />
-                      <bt:Image size="80" resid="icon80" />
+                      <bt:Image size="16" resid="unread16" />
+                      <bt:Image size="32" resid="unread32" />
+                      <bt:Image size="80" resid="unread80" />
                     </Icon>
                     <Action xsi:type="ExecuteFunction">
                       <FunctionName>markAsUnread</FunctionName>
@@ -168,9 +168,9 @@
                       <Description resid="flagSuperTipDescription" />
                     </Supertip>
                     <Icon>
-                      <bt:Image size="16" resid="icon16" />
-                      <bt:Image size="32" resid="icon32" />
-                      <bt:Image size="80" resid="icon80" />
+                      <bt:Image size="16" resid="flag16" />
+                      <bt:Image size="32" resid="flag32" />
+                      <bt:Image size="80" resid="flag80" />
                     </Icon>
                     <Action xsi:type="ExecuteFunction">
                       <FunctionName>flag</FunctionName>
@@ -192,17 +192,17 @@
                 <Control xsi:type="MobileButton" id="mblMarkUnreadFunctionButton">
                   <Label resid="markUnreadButtonLabel" />
                   <Icon xsi:type="bt:MobileIconList">
-                    <bt:Image size="25" scale="1" resid="icon25" />
-                    <bt:Image size="25" scale="2" resid="icon25" />
-                    <bt:Image size="25" scale="3" resid="icon25" />
+                    <bt:Image size="25" scale="1" resid="unread25" />
+                    <bt:Image size="25" scale="2" resid="unread25" />
+                    <bt:Image size="25" scale="3" resid="unread25" />
 
-                    <bt:Image size="32" scale="1" resid="icon32" />
-                    <bt:Image size="32" scale="2" resid="icon32" />
-                    <bt:Image size="32" scale="3" resid="icon32" />
+                    <bt:Image size="32" scale="1" resid="unread32" />
+                    <bt:Image size="32" scale="2" resid="unread32" />
+                    <bt:Image size="32" scale="3" resid="unread32" />
 
-                    <bt:Image size="48" scale="1" resid="icon48" />
-                    <bt:Image size="48" scale="2" resid="icon48" />
-                    <bt:Image size="48" scale="3" resid="icon48" />
+                    <bt:Image size="48" scale="1" resid="unread48" />
+                    <bt:Image size="48" scale="2" resid="unread48" />
+                    <bt:Image size="48" scale="3" resid="unread48" />
                   </Icon>
                   <Action xsi:type="ExecuteFunction">
                     <FunctionName>markAsUnread</FunctionName>
@@ -211,17 +211,17 @@
                 <Control xsi:type="MobileButton" id="mblFlagFunctionButton">
                   <Label resid="flagButtonLabel" />
                   <Icon xsi:type="bt:MobileIconList">
-                    <bt:Image size="25" scale="1" resid="icon25" />
-                    <bt:Image size="25" scale="2" resid="icon25" />
-                    <bt:Image size="25" scale="3" resid="icon25" />
+                    <bt:Image size="25" scale="1" resid="flag25" />
+                    <bt:Image size="25" scale="2" resid="flag25" />
+                    <bt:Image size="25" scale="3" resid="flag25" />
 
-                    <bt:Image size="32" scale="1" resid="icon32" />
-                    <bt:Image size="32" scale="2" resid="icon32" />
-                    <bt:Image size="32" scale="3" resid="icon32" />
+                    <bt:Image size="32" scale="1" resid="flag32" />
+                    <bt:Image size="32" scale="2" resid="flag32" />
+                    <bt:Image size="32" scale="3" resid="flag32" />
 
-                    <bt:Image size="48" scale="1" resid="icon48" />
-                    <bt:Image size="48" scale="2" resid="icon48" />
-                    <bt:Image size="48" scale="3" resid="icon48" />
+                    <bt:Image size="48" scale="1" resid="flag48" />
+                    <bt:Image size="48" scale="2" resid="flag48" />
+                    <bt:Image size="48" scale="3" resid="flag48" />
                   </Icon>
                   <Action xsi:type="ExecuteFunction">
                     <FunctionName>flag</FunctionName>
@@ -235,11 +235,16 @@
 
       <Resources>
         <bt:Images>
-          <bt:Image id="icon16" DefaultValue="https://marksingleunread.azurewebsites.net/assets/icon-16.png"/>
-          <bt:Image id="icon25" DefaultValue="https://marksingleunread.azurewebsites.net/assets/icon-25.png"/>
-          <bt:Image id="icon32" DefaultValue="https://marksingleunread.azurewebsites.net/assets/icon-32.png"/>
-          <bt:Image id="icon48" DefaultValue="https://marksingleunread.azurewebsites.net/assets/icon-48.png"/>
-          <bt:Image id="icon80" DefaultValue="https://marksingleunread.azurewebsites.net/assets/icon-80.png"/>
+          <bt:Image id="unread16" DefaultValue="https://marksingleunread.azurewebsites.net/assets/unread-16.png"/>
+          <bt:Image id="unread25" DefaultValue="https://marksingleunread.azurewebsites.net/assets/unread-25.png"/>
+          <bt:Image id="unread32" DefaultValue="https://marksingleunread.azurewebsites.net/assets/unread-32.png"/>
+          <bt:Image id="unread48" DefaultValue="https://marksingleunread.azurewebsites.net/assets/unread-48.png"/>
+          <bt:Image id="unread80" DefaultValue="https://marksingleunread.azurewebsites.net/assets/unread-80.png"/>
+          <bt:Image id="flag16" DefaultValue="https://marksingleunread.azurewebsites.net/assets/flag-16.png"/>
+          <bt:Image id="flag25" DefaultValue="https://marksingleunread.azurewebsites.net/assets/flag-25.png"/>
+          <bt:Image id="flag32" DefaultValue="https://marksingleunread.azurewebsites.net/assets/flag-32.png"/>
+          <bt:Image id="flag48" DefaultValue="https://marksingleunread.azurewebsites.net/assets/flag-48.png"/>
+          <bt:Image id="flag80" DefaultValue="https://marksingleunread.azurewebsites.net/assets/flag-80.png"/>
         </bt:Images>
         <bt:Urls>
           <bt:Url id="functionFile" DefaultValue="https://marksingleunread.azurewebsites.net/function-file/function-file.html"/>
